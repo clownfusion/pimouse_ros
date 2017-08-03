@@ -6,7 +6,7 @@ pip install empy
 pip install pyyaml
 pip install rospkg
 
-#ros install
+#ros install 
 cd ..
 git clone https://github.com/clownfusion/ros_setup_scripts_Ubuntu16.04_server.git
 cd ./ros_setup_scripts_Ubuntu16.04_server
