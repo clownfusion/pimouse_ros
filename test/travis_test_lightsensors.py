@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python 
 #encoding: utf8
 import unittest, rostest
 import rosnode, rospy
@@ -11,7 +11,7 @@ class LightsensorTest(unittest.TestCase):
        rospy.Subscriber('/lightsensors', LightSensorValues, self.callback)
        self.values = LightSensorValues()
 
-   def callback(self, data)
+   def callback(self, data):
        self.count += 1
        self.values = data
 
@@ -31,10 +31,8 @@ class LightsensorTest(unittest.TestCase):
    def test_getvalue(self):
        rospy.set_param('lightsensors_freq',10)
        time.sleep(2)
-       with open("/dev/rtlightsensors_freq",10)
-       time.sleep(2)
        with open("/dev/rtlightsensor0","w") as f:
-            f.write("-1 0 123 4321\n")
+           f.write("-1 0 123 4321\n")
        time.sleep(3)
 
        self.assertFalse(self.count == 0, "cannnot subscribe the topic")
@@ -45,10 +43,11 @@ class LightsensorTest(unittest.TestCase):
        time.sleep(2)
        c_prev = self.count
        time.sleep(3)
+
        self.assertTrue(self.count < c_prev + 4, "freq does not change")
        self.assertFalse(self.count == c_prev,"subscriber is stopped")
 
-  if __name__ == '__main__':
-       time.sleep(3)
-       rospy.init_node('travis_test_lightsensors')
-       rostest.rosrun('pimouse_ros', 'travis_test_lightsensors',LightsensorTest)
+if __name__ == '__main__':
+     time.sleep(3)
+     rospy.init_node('travis_test_lightsensors')
+     rostest.rosrun('pimouse_ros', 'travis_test_lightsensors',LightsensorTest)
